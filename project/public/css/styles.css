@@ -1,15 +1,17 @@
 /* styles.css */
 
+/* General body styles */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #000000;
-    color: #9b9b9b;
+    background-color: #000000; /* Black background for the whole page */
+    color: #9b9b9b; /* Gray text color */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    min-height: 100vh;
 }
 
 .container {
@@ -18,7 +20,7 @@ body {
 
 h1 {
     font-size: 2.5rem;
-    color: #00912c;
+    color: #00912c; /* Green color for the heading */
     margin-bottom: 2rem;
 }
 
@@ -27,26 +29,129 @@ h1 {
 }
 
 .links .btn {
-    color: #9b9b9b;
-    background-color: transparent;
-    border: 2px solid #9b9b9b;
+    color: #9b9b9b; /* Gray text color */
+    background-color: transparent; /* Transparent background */
+    border: 2px solid #9b9b9b; /* Gray border */
     padding: 0.75rem 1.5rem;
     text-decoration: none;
     font-size: 1rem;
     margin: 0 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px; /* Rounded corners */
 }
 
 .links .btn:hover {
-    background-color: #00912c;
-    color: #ffffff;
+    background-color: #00912c; /* Green background on hover */
+    color: #ffffff; /* White text on hover */
 }
 
 .links .btn.register {
-    border-color: #00912c;
+    border-color: #00912c; /* Green border for the register button */
 }
 
 .links .btn.register:hover {
+    background-color: #9b9b9b; /* Gray background on hover */
+    color: #000000; /* Black text on hover */
+}
+
+/* Custom styles for the login page */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.login-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+    color: #00912c; /* Green color for the heading */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #000000; /* Black color for labels */
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #9b9b9b; /* Gray border color */
+    border-radius: 4px;
+}
+
+.form-group input.is-invalid {
+    border-color: #e3342f; /* Red border color for invalid input */
+}
+
+.invalid-feedback {
+    color: #e3342f; /* Red color for error messages */
+}
+
+.btn-primary {
+    background-color: #00912c; /* Green color for buttons */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #007a1f; /* Darker green on hover */
+}
+
+.btn-link {
+    color: #007bff; /* Blue color for link */
+}
+
+.btn-link:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+/* Custom styles for the register page */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+}
+
+.register-box {
     background-color: #9b9b9b;
-    color: #000000;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.register-box h2 {
+    color: #00912c;
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
 }
