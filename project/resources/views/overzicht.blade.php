@@ -3,9 +3,12 @@
 @section('content')
 
   {{-- Button to navigate to the Producten page --}}
-  <div class="mb-3">
-    <a href="{{ route('producten.index') }}" class="btn btn-primary">Add / Edit Product</a>
-  </div>
+    {{-- Button to navigate to the Producten page --}}
+    <div class="mb-3">
+      <a href="{{ route('producten.index') }}" class="btn btn-primary">Add / Edit Product</a>
+      {{-- Button to export product info --}}
+      <a href="{{ route('google.authenticate') }}" class="btn btn-success">Export Products</a>
+    </div>
 
   {{-- Product List Table --}}
   <div class="card">
