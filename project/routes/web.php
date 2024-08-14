@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OverzichtController;
 use App\Http\Controllers\ProductenController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ExportController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,17 @@ Route::delete('producten/destroy-all', [ProductenController::class, 'destroyAll'
 
 Route::resource('producten', ProductenController::class);
 Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');
+
+
+
+
+
+// routes/web.php
+Route::get('/auth/google', [ExportController::class, 'authenticate'])->name('google.authenticate');
+Route::get('/google/callback', [ExportController::class, 'callback'])->name('google.callback');
+Route::get('/export', [ExportController::class, 'export'])->name('export');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
