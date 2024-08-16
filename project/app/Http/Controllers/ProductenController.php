@@ -35,7 +35,7 @@ class ProductenController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the incoming request data
+    // Validate the incoming request data
     $request->validate([
         'product_name' => 'required|string|max:255',
         'quantity' => 'required|integer',
@@ -43,11 +43,14 @@ class ProductenController extends Controller
     ]);
 
     // Create a new product
-    Producten::create([
+    $product = Producten::create([
         'product_name' => $request->input('product_name'),
         'quantity' => $request->input('quantity'),
-        'category_id' => $request ['category_id'],
+        'category_id' => $request->input('category_id'),
     ]);
+
+    // Check stock level and send notification if needed
+    $this->checkStockLevel($product);
 
     // Redirect back with a success message
     return redirect()->route('producten.index')->with('success', 'Product created successfully.');

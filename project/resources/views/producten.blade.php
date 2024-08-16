@@ -1,4 +1,3 @@
-{{-- In resources/views/producten/create.blade.php --}}
 @extends('layouts.header')
 
 @section('content')
@@ -108,33 +107,42 @@
 </div>
 
 {{-- Edit Product Modal --}}
-<div id="edit-form-container" style="display: none;">
-    <h2>Edit Product</h2>
-    <form id="edit-product-form" method="POST">
-        @csrf
-        @method('PUT')
-        <input type="hidden" name="id" id="product-id">
+<div id="edit-form-container" class="modal" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Edit Product</h5>
+                <button type="button" class="close" onclick="document.getElementById('edit-form-container').style.display='none'">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('producten.update', $product->id) }}" id="edit-product-form" method="POST">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="id" id="product-id">
 
-        <div class="form-group">
-            <label for="edit-product-name">Product Name</label>
-            <input type="text" class="form-control" id="edit-product-name" name="product_name" required>
+                <div class="form-group">
+                    <label for="edit-product-name">Product Name</label>
+                    <input type="text" class="form-control" id="edit-product-name" name="product_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-quantity">Quantity</label>
+                    <input type="number" class="form-control" id="edit-quantity" name="quantity" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-category">Category</label>
+                    <select class="form-control" id="edit-category" name="category_id" required>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update Product</button>
+            </form>
         </div>
-
-        <div class="form-group">
-            <label for="edit-quantity">Quantity</label>
-            <input type="number" class="form-control" id="edit-quantity" name="quantity" required>
-        </div>
-
-        <div class="form-group">
-            <label for="edit-category">Category</label>
-            <select class="form-control" id="edit-category" name="category_id" required>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Update Product</button>
-    </form>
+    </div>
 </div>
 @endsection

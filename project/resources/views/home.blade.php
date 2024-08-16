@@ -7,22 +7,15 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 <body>
-    <div class="container">
-        <div class="content">
-            <h1>Welcome to Enigma Inventory</h1>
-            @if (Route::has('login'))
-                <div class="links">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="btn">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="btn">Log in</a>
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="btn register">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-        </div>
+    <div class="container home-container">
+        <h1>Welcome to Enigma Inventory</h1>
+      
+            <div class="links">
+                    <a href="{{ route('login') }}" class="btn btn-primary">Log in</a>
+                    
+                    <a href="{{ route('register') }}" class="btn btn-secondary">Register</a>
+            </div>
+      
     </div>
 </body>
 </html>
