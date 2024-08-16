@@ -97,13 +97,9 @@ class ProductenController extends Controller
    protected function checkStockLevel($product)
 {
     // Check if stock is above 5
-    if ($product->quantity > 5) {
-        $this->sendNotification($product, 'over');
-    } 
-    // Check if stock is 5 or below
-    elseif ($product->quantity <= 5) {
+    if ($product->quantity < 5) {
         $this->sendNotification($product, 'under');
-    }
+    } 
 }
 
 protected function sendNotification($product, $level)

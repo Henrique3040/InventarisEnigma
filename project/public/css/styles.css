@@ -16,8 +16,8 @@ body {
 
 /* Centering Forms */
 .form-container {
-    max-width: 600px; /* Adjust width as needed */
-    margin: 0 auto;   /* Center horizontally */
+    max-width: 600px; 
+    margin: 0 auto;   
 }
 
 .form-group {
@@ -192,6 +192,7 @@ body {
     flex-direction: column;
     gap: 2rem;
     align-items: center;
+    
 }
 
 .profile-card {
@@ -281,4 +282,18 @@ body {
     font-size: 0.875rem;
     color: #28a745;
     margin-top: 0.5rem;
+}
+
+/* Logo Styling */
+.app-logo {
+    max-width: 400px; /* Increase size for welcome page */
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.navbar-logo {
+    max-width: 150px; 
+    height: auto;
+    margin-right: 15px; 
+    vertical-align: middle; 
 }
