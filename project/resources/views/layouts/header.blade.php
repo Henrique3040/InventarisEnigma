@@ -24,6 +24,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body class="font-sans antialiased">
+
+    @auth
+        @include('layouts.navigatieBar')
+    @endauth
+
     <div class="login-container">
         @yield('content')
     </div>

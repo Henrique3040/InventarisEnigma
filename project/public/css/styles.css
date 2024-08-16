@@ -1,79 +1,23 @@
-/* General body styles */
+/* General Styling */
 body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #f5f5f5;
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #000000; /* Black background for the whole page */
-    color: #9b9b9b; /* Gray text color */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    min-height: 100vh;
 }
 
 .container {
     text-align: center;
-}
-
-h1 {
-    font-size: 2.5rem;
-    color: #00912c; /* Green color for the heading */
-    margin-bottom: 2rem;
-}
-
-.links {
-    margin-top: 1.5rem;
-}
-
-.links .btn {
-    color: #9b9b9b; /* Gray text color */
-    background-color: transparent; /* Transparent background */
-    border: 2px solid #9b9b9b; /* Gray border */
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
-    font-size: 1rem;
-    margin: 0 10px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border-radius: 5px; /* Rounded corners */
-}
-
-.links .btn:hover {
-    background-color: #00912c; /* Green background on hover */
-    color: #ffffff; /* White text on hover */
-}
-
-.links .btn.register {
-    border-color: #00912c; /* Green border for the register button */
-}
-
-.links .btn.register:hover {
-    background-color: #9b9b9b; /* Gray background on hover */
-    color: #000000; /* Black text on hover */
-}
-
-/* Custom styles for the login page */
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%;
-}
-
-.login-box {
-    background: white;
+    width: 80%;
+    margin: 0 auto;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
 }
 
-.login-box h2 {
-    margin-bottom: 20px;
-    color: #00912c; /* Green color for the heading */
+/* Centering Forms */
+.form-container {
+    max-width: 600px; /* Adjust width as needed */
+    margin: 0 auto;   /* Center horizontally */
 }
 
 .form-group {
@@ -83,191 +27,258 @@ h1 {
 .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: #000000; /* Black color for labels */
 }
 
-.form-group input {
-    width: 100%;
+.form-group input, 
+.form-group select {
+    width: 75%;
     padding: 10px;
-    border: 1px solid #9b9b9b; /* Gray border color */
-    border-radius: 4px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
 }
 
-.form-group input.is-invalid {
-    border-color: #e3342f; /* Red border color for invalid input */
+/* Centered Login/Register Box */
+.login-box, .register-box {
+    background-color: #333;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.invalid-feedback {
-    color: #e3342f; /* Red color for error messages */
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
 }
 
 .btn-primary {
-    background-color: #00912c; /* Green color for buttons */
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: #007bff;
 }
 
-.btn-primary:hover {
-    background-color: #007a1f; /* Darker green on hover */
+.btn-secondary {
+    background-color: #6c757d;
 }
 
-.btn-link {
-    color: #007bff; /* Blue color for link */
+.btn-success {
+    background-color: #28a745;
 }
 
-.btn-link:hover {
-    color: #0056b3; /* Darker blue on hover */
-}
-
-/* Custom styles for the register page */
-.register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #000000;
-}
-
-.register-box {
-    background-color: #9b9b9b;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    width: 100%;
-    max-width: 400px;
-}
-
-.register-box h2 {
-    color: #00912c;
-    margin-bottom: 1.5rem;
-}
-
-.form-control {
-    background-color: #f2f2f2;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-}
-
-/* Custom styles for the product management page */
-.card {
-    background-color: #ffffff; /* White background for cards */
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.5rem;
-}
-
-.card-header {
-    background-color: #00912c; /* Green background for card headers */
-    color: #ffffff; /* White text color for headers */
-    padding: 1rem;
-    border-radius: 8px 8px 0 0;
-    font-size: 1.25rem;
-}
-
-.card-body {
-    padding: 1.25rem;
-}
-
-.table {
-    width: 100%;
-    margin-bottom: 1rem;
-    color: #000000; /* Black text color for table */
-}
-
-.table-bordered {
-    border: 1px solid #dee2e6;
-}
-
-.table th, .table td {
-    padding: 0.75rem;
-    vertical-align: top;
-    border: 1px solid #dee2e6;
-}
-
-.table th {
-    background-color: #f2f2f2;
-    color: #000000; /* Black text color for table headers */
-}
-
-.btn-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-    border-radius: 0.2rem;
+.btn-danger {
+    background-color: #dc3545;
 }
 
 .btn-warning {
-    background-color: #ffc107; /* Bootstrap warning button color */
-    border-color: #ffc107;
-    color: #000000; /* Black text color */
+    background-color: #ffc107;
 }
 
-.btn-warning:hover {
-    background-color: #e0a800; /* Darker yellow on hover */
+/* Card Styling */
+.card {
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 5px;
+    margin-bottom: 20px;
 }
 
+.card-header {
+    background-color: #444;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead {
+    background-color: #444;
+}
+
+.table th, .table td {
+    border: 1px solid #555;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Modal Styling */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1050;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    outline: 0;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
 }
 
 .modal-dialog {
-    position: relative;
-    width: auto;
-    margin: 1.75rem auto;
+    margin: 15% auto;
+    width: 80%;
 }
 
 .modal-content {
-    position: relative;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: .3rem;
-    outline: 0;
+    background-color: #222;
+    color: #fff;
+    border-radius: 5px;
 }
 
-.modal-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: .75rem 1.25rem;
-    border-bottom: 1px solid #dee2e6;
-}
-
-.modal-title {
-    margin: 0;
-    line-height: 1.5;
+.modal-header, .modal-footer {
+    padding: 10px;
+    background-color: #333;
 }
 
 .modal-body {
-    position: relative;
-    padding: 1.25rem;
-}
-
-.modal-footer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: .75rem 1.25rem;
-    border-top: 1px solid #dee2e6;
+    padding: 20px;
 }
 
 .close {
-    padding: .5rem .75rem;
-    margin: -0.5rem -0.75rem -0.5rem auto;
-    border: 0;
-    background: transparent;
-    -webkit-appearance: none;
+    color: #fff;
+    font-size: 1.5em;
+}
+
+.close:hover {
+    color: #ccc;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #333;
+    padding: 10px 20px;
+    border-bottom: 1px solid #444;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.navbar-container a,
+.navbar-container form {
+    margin: 0 10px; 
+}
+
+.navbar-container .btn {
+    padding: 10px 15px; 
+    font-size: 16px;
+}
+
+/* Profile Page Styling */
+.profile-container {
+    padding: 3rem 0;
+    background-color: #1e1e1e;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.profile-card {
+    background-color: #333;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+}
+
+.profile-card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #f5f5f5;
+}
+
+.profile-card p {
+    font-size: 0.875rem;
+    color: #ccc;
+    margin-top: 0.5rem;
+}
+
+.profile-card form {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.profile-card form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.profile-card form .form-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #f5f5f5;
+}
+
+.profile-card form .form-group input,
+.profile-card form .form-group select {
+    padding: 0.75rem;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+    width: 100%;
+}
+
+.profile-card form .form-group input:focus,
+.profile-card form .form-group select:focus {
+    outline: none;
+    border-color: #007bff;
+    background-color: #333;
+}
+
+.profile-card .btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
     cursor: pointer;
+    text-align: center;
+}
+
+.profile-card .btn-primary {
+    background-color: #007bff;
+}
+
+.profile-card .btn-danger {
+    background-color: #dc3545;
+}
+
+.profile-card .btn-secondary {
+    background-color: #6c757d;
+}
+
+.profile-card .btn:hover {
+    opacity: 0.9;
+}
+
+/* Success Message */
+.profile-card p.text-sm.text-gray-600 {
+    font-size: 0.875rem;
+    color: #28a745;
+    margin-top: 0.5rem;
 }

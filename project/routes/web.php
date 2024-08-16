@@ -25,10 +25,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/overzicht', [OverzichtController::class, 'index'] )->name('overzicht');
+Route::get('/overzicht', [OverzichtController::class, 'index'] )->middleware(['auth', 'verified'])->name('overzicht');
 
 Route::resource('producten', ProductenController::class);
-Route::delete('producten/destroy-all', [ProductenController::class, 'destroyAll'])->name('producten.destroyAll');
+
 
 Route::resource('producten', ProductenController::class);
 Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');
