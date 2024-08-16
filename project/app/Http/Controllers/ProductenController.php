@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Producten;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Notifications\ProductStockLevelNotification;
+use App\Models\User;
 
 class ProductenController extends Controller
 {
@@ -34,7 +36,7 @@ class ProductenController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+   {
     // Validate the incoming request data
     $request->validate([
         'product_name' => 'required|string|max:255',
@@ -54,7 +56,7 @@ class ProductenController extends Controller
 
     // Redirect back with a success message
     return redirect()->route('producten.index')->with('success', 'Product created successfully.');
-    }
+   }
 
     
     /**
@@ -76,17 +78,47 @@ class ProductenController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Producten $producten)
-    {
-        $request->validate([
-            'product_name' => 'required|string|max:255',
-            'quantity' => 'required|integer',
-            'category_id' => 'nullable|exists:categories,id'
-        ]);
+   {
+    $request->validate([
+        'product_name' => 'required|string|max:255',
+        'quantity' => 'required|integer',
+        'category_id' => 'nullable|exists:categories,id'
+    ]);
 
-        $producten->update($request->all());
+    $producten->update($request->all());
 
-        return redirect()->route('producten.index')->with('success', 'Product updated successfully.');
+    // Check stock level and send notification if needed
+    $this->checkStockLevel($producten);
+
+    return redirect()->route('producten.index')->with('success', 'Product updated successfully.');
+   }
+
+
+   protected function checkStockLevel($product)
+{
+    // Check if stock is above 5
+    if ($product->quantity > 5) {
+        $this->sendNotification($product, 'over');
+    } 
+    // Check if stock is 5 or below
+    elseif ($product->quantity <= 5) {
+        $this->sendNotification($product, 'under');
     }
+}
+
+protected function sendNotification($product, $level)
+{
+    // Get all users
+    $users = User::all();
+
+    // Loop through each user and send the notification
+    foreach ($users as $user) {
+        $user->notify(new ProductStockLevelNotification($product, $level));
+    }
+}
+
+
+
 
     /**
      * Remove the specified resource from storage.
