@@ -8,6 +8,15 @@
     <div class="card mb-4">
         <div class="card-header">Add New Product</div>
         <div class="card-body">
+
+            {{-- Display error message for negative quantity --}}
+           @if ($errors->has('quantity'))
+              <div class="alert alert-danger">
+                   {{ $errors->first('quantity') }}
+              </div>
+           @endif
+
+
             <form method="POST" action="{{ route('producten.store') }}">
                 @csrf
                 <div class="form-group">
@@ -52,8 +61,25 @@
                     @foreach ($producten as $product)
                     <tr>
                         <td>{{ $product->product_name }}</td>
-                        <td>{{ $product->quantity }}</td>
+
+                        <td>
+                            <form action="{{ route('producten.updateQuantity', $product->id) }}" method="POST" style="display: inline;">
+                                @csrf
+                                @method('PUT')
+    
+                                {{-- Decrease Button --}}
+                                <button type="submit" name="action" value="decrease" class="btn btn-sm btn-secondary">-</button>
+    
+                                {{-- Display Quantity --}}
+                                {{ $product->quantity }}
+    
+                                {{-- Increase Button --}}
+                                <button type="submit" name="action" value="increase" class="btn btn-sm btn-secondary">+</button>
+                            </form>
+                        </td>
                         <td>{{ $product->category->name ?? 'No Category' }}</td>
+                        
+
                         <td>
                             {{-- Edit Button --}}
                             <button type="button" class="btn btn-warning btn-sm edit-button"
@@ -116,7 +142,7 @@
                     <span>&times;</span>
                 </button>
             </div>
-            <form action="{{ route('producten.update', $product->id) }}" id="edit-product-form" method="POST">
+            <form id="edit-product-form" method="POST">
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="id" id="product-id">
