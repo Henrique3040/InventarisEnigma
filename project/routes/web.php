@@ -27,10 +27,10 @@ Route::get('/dashboard', function () {
 
 Route::get('/overzicht', [OverzichtController::class, 'index'] )->middleware(['auth', 'verified'])->name('overzicht');
 
-Route::resource('producten', ProductenController::class);
 
 
-Route::resource('producten', ProductenController::class);
+
+Route::resource('producten', ProductenController::class)->middleware(['auth', 'verified']);
 Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');
 
 
