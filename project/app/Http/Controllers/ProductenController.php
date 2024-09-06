@@ -37,10 +37,12 @@ class ProductenController extends Controller
      */
     public function store(Request $request)
    {
+
+    
     // Validate the incoming request data
     $request->validate([
         'product_name' => 'required|string|max:255',
-        'quantity' => 'required|integer',
+        'quantity' => 'required|integer|min:0',
         'category_id' => 'required|exists:categories,id',
     ]);
 
@@ -79,11 +81,18 @@ class ProductenController extends Controller
      */
     public function update(Request $request, Producten $producten)
    {
+
+    
+
     $request->validate([
         'product_name' => 'required|string|max:255',
-        'quantity' => 'required|integer',
+        'quantity' => 'required|integer|min:0',
         'category_id' => 'nullable|exists:categories,id'
+    ], [
+        'quantity.min' => 'The quantity must be a positive number.',
     ]);
+
+    
 
     $producten->update($request->all());
 
@@ -93,14 +102,38 @@ class ProductenController extends Controller
     return redirect()->route('producten.index')->with('success', 'Product updated successfully.');
    }
 
+    
+   public function updateQuantity(Request $request, Producten $product)
+   {
+    // Determine if the action is to increase or decrease quantity
+    $action = $request->input('action');
+
+    if ($action == 'increase') {
+        $product->quantity += 1;
+    } elseif ($action == 'decrease' && $product->quantity > 0) {
+        $product->quantity -= 1;
+    }
+
+    // Save the updated product quantity
+    $product->save();
+
+    // Check stock level and send notification if needed
+    $this->checkStockLevel($product);
+
+    // Redirect back with a success message
+    return redirect()->route('producten.index')->with('success', 'Product quantity updated successfully.');
+  }
+
+
+
 
    protected function checkStockLevel($product)
-{
+   {
     // Check if stock is above 5
     if ($product->quantity < 5) {
         $this->sendNotification($product, 'under');
     } 
-}
+   }
 
 protected function sendNotification($product, $level)
 {

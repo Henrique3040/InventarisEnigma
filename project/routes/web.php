@@ -31,10 +31,8 @@ Route::get('/overzicht', [OverzichtController::class, 'index'] )->middleware(['a
 
 
 Route::resource('producten', ProductenController::class)->middleware(['auth', 'verified']);
+Route::put('producten/{product}/updateQuantity', [ProductenController::class, 'updateQuantity'])->name('producten.updateQuantity');
 Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');
-
-
-
 
 
 // routes/web.php
